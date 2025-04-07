@@ -48,7 +48,9 @@
                   </li>
                  
                 </ul>
-
+                <button class="btn btn-outline-secondary ms-2" (click)="toggleTheme()">
+                  <i [class]="isDarkMode ? 'bi bi-moon-stars-fill' : 'bi bi-sun-fill'"></i>
+                </button>
                 <button type="button" class="btn btn-dark ms-auto" (click)="toggleProfile()">
                   <i class="bi bi-person-circle"></i> Profile
                 </button>
@@ -69,7 +71,9 @@
                <a class="nav-link" routerLink="/view-projects">View Projects</a>
              </li>
            </ul>
-
+           <button class="btn btn-outline-secondary ms-2" (click)="toggleTheme()">
+            <i [class]="isDarkMode ? 'bi bi-moon-stars-fill' : 'bi bi-sun-fill'"></i>
+          </button>
            <button type="button" class="btn btn-dark ms-auto" (click)="toggleProfile()">
             <i class="bi bi-person-circle"></i> Profile
           </button>

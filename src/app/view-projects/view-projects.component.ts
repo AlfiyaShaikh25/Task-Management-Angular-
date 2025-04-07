@@ -174,14 +174,14 @@ export class ViewProjectsComponent {
     const today = new Date();
     const dueDate = new Date(dueDateStr);
     
-   
+    // Reset times to 0 for accurate date comparison
     today.setHours(0, 0, 0, 0);
     dueDate.setHours(0, 0, 0, 0);
   
     const timeDiff = dueDate.getTime() - today.getTime();
     const dayDiff = timeDiff / (1000 * 60 * 60 * 24);
   
-    return dayDiff >= 0 && dayDiff <= 3; 
+    return dayDiff >= 0 && dayDiff <= 3; // Due in 3 days or less
   }
 
 

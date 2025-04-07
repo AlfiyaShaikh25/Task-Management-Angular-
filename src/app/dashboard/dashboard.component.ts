@@ -30,6 +30,12 @@ userId:string|null=""
 
   ngOnInit():void{
 
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      this.isDarkMode = true;
+      document.body.classList.add('dark-mode');
+    }
     
     const userData = localStorage.getItem('loggedInUser');
    if (userData) {
@@ -46,5 +52,13 @@ userId:string|null=""
 
 
   
+  
 
+  toggleTheme() {
+    this.isDarkMode = !this.isDarkMode;
+    const theme = this.isDarkMode ? 'dark' : 'light';
+    document.body.classList.toggle('dark-mode', this.isDarkMode);
+    localStorage.setItem('theme', theme);
+  }
+  
 }

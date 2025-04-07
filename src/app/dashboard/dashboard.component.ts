@@ -14,6 +14,7 @@ import { NgIf } from '@angular/common';
 export class DashboardComponent {
 
   isProfileOpen = false; 
+  isDarkMode: boolean = false;
 
   toggleProfile() {
     this.isProfileOpen = !this.isProfileOpen; 
@@ -28,8 +29,10 @@ userId:string|null=""
   constructor (private route:ActivatedRoute,private userService:UserService){}
 
   ngOnInit():void{
+
+    
     const userData = localStorage.getItem('loggedInUser');
-  if (userData) {
+   if (userData) {
     const user = JSON.parse(userData);
     this.userId = user.id;
     this.userName = user.username;
@@ -40,5 +43,8 @@ userId:string|null=""
   }
 
   }
+
+
+  
 
 }

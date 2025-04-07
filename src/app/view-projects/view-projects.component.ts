@@ -33,6 +33,11 @@ export class ViewProjectsComponent {
     teamMembers: '',
     dueDate: ''
   };
+
+  sortField: 'startDate' | 'endDate' = 'startDate';
+  sortDirection: 'asc' | 'desc' = 'asc';
+  
+
   constructor() {
     
   }
@@ -61,10 +66,10 @@ export class ViewProjectsComponent {
   
 
   openTaskForm(index: number) {
-    this.selectedProjectIndex = index; // Set selected project index
+    this.selectedProjectIndex = index; 
     this.newTask = { title: '', assignedTo: '', status: 'In Progress', assignedUser: '', estimate: '', timeSpent: '' };
   
-    // Open Bootstrap modal with smooth effect
+    
     const modal = document.getElementById('taskModal');
     if (modal) {
       (modal as any).classList.add('show');
@@ -76,9 +81,9 @@ export class ViewProjectsComponent {
 
   openUpdateProjectModal(index: number): void {
     this.updateProjectIndex = index;
-    // Make a shallow copy of the project data to update (to avoid two-way binding issues)
+   
     this.updateProjectData = { ...this.projects[index] };
-    // Open the modal (assumes you have an element with id 'updateProjectModal')
+    
     const modal = document.getElementById('updateProjectModal');
     if (modal) {
       (modal as any).classList.add('show');
@@ -92,10 +97,10 @@ export class ViewProjectsComponent {
     if (this.updateProjectIndex === null) {
       return;
     }
-    // Update the project data in your projects array
+   
     this.projects[this.updateProjectIndex] = { ...this.updateProjectData };
 
-    // Save to localStorage using the user-specific key
+    
     const storedUser = localStorage.getItem('loggedInUser');
     if (storedUser) {
       const user = JSON.parse(storedUser);
@@ -103,7 +108,7 @@ export class ViewProjectsComponent {
       localStorage.setItem(userProjectsKey, JSON.stringify(this.projects));
     }
 
-    // Close the update modal
+    
     this.closeUpdateProjectModal();
   }
 
@@ -169,23 +174,35 @@ export class ViewProjectsComponent {
     const today = new Date();
     const dueDate = new Date(dueDateStr);
     
-    // Reset times to 0 for accurate date comparison
+   
     today.setHours(0, 0, 0, 0);
     dueDate.setHours(0, 0, 0, 0);
   
     const timeDiff = dueDate.getTime() - today.getTime();
     const dayDiff = timeDiff / (1000 * 60 * 60 * 24);
   
-    return dayDiff >= 0 && dayDiff <= 3; // Due in 3 days or less
+    return dayDiff >= 0 && dayDiff <= 3; 
   }
 
 
   searchTerm: string = '';
 
-get filteredProjects() {
-  return this.projects.filter(project =>
-    project.title.toLowerCase().includes(this.searchTerm.toLowerCase())
-  );
-}
+  get filteredProjects() {
+    const filtered = this.projects.filter(project =>
+      project.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  
+    return filtered.sort((a, b) => {
+      const dateA = new Date(a[this.sortField]);
+      const dateB = new Date(b[this.sortField]);
+  
+      return this.sortDirection === 'asc'
+        ? dateA.getTime() - dateB.getTime()
+        : dateB.getTime() - dateA.getTime();
+    });
+  }
+  
+
+
 
 }

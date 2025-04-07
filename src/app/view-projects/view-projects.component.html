@@ -19,6 +19,22 @@
   </div>
 </div>
 
+<div class="row mb-3">
+  <div class="col-md-4">
+    <label for="sortField" class="form-label">Sort By:</label>
+    <select class="form-select" id="sortField" [(ngModel)]="sortField">
+      <option value="startDate">Start Date</option>
+      <option value="endDate">End Date</option>
+    </select>
+  </div>
+  <div class="col-md-4">
+    <label for="sortDirection" class="form-label">Order:</label>
+    <select class="form-select" id="sortDirection" [(ngModel)]="sortDirection">
+      <option value="asc">Ascending</option>
+      <option value="desc">Descending</option>
+    </select>
+  </div>
+</div>
 
 
 <div *ngIf="projects.length === 0" class="text-center noproject-text">

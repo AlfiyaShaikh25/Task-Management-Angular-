@@ -98,19 +98,19 @@
     
     <!-- Name and Email -->
     <h5 class="mt-2">{{ userName}}</h5>
-    <p class="text-muted">{{ email }}</p>
+    <p class="emailtext">{{ email }}</p>
     <div class="d-flex justify-content-center">
       <a [routerLink]="['/profile-setting', { username: userName, email: email }]">Profile Setting</a>
 
 </div>
     <!-- Logout Button -->
-    <button class="btn btn-danger btn-sm mt-2" routerLink="/login">Logout</button>
+    <button class="btn btn-danger btn-sm mt-2 btn-logout" routerLink="/login">Logout</button>
   </div>
 </div>
 
 <div class="container mt-5 pt-4">
-  <h1 class="text-start fw-bold display-6 ">
- Welcome, {{ userName }}! 
+  <h1 class="text-start fw-bold display-6  welcome-text mt-5">
+    😊 Welcome, {{ userName }}! 
   </h1>
 </div>
 

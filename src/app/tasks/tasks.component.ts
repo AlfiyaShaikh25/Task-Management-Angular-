@@ -171,6 +171,13 @@ export class TasksComponent {
   }
   
   
+  searchTerm: string = '';
+
+  get filteredProjects() {
+    return this.tasks.filter(project =>
+      project.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  }
   
   
   }

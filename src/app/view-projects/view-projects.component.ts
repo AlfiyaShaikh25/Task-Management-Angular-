@@ -140,6 +140,7 @@ export class ViewProjectsComponent {
       localStorage.setItem(userProjectsKey, JSON.stringify(this.projects));
   
       this.newTask = { title: '', assignedTo: '', status: 'In Progress', assignedUser: '', estimate: '', timeSpent: '' };
+      alert("task added")
       this.closeTaskForm();
       this.loadProjects();
     }

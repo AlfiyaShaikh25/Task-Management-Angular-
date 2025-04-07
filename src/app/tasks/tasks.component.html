@@ -13,6 +13,25 @@
 </div>
 
 
+<div class="container searchclass main-container mb-2 mt-2">
+  <div class="row">
+    <div class="col-12 d-flex justify-content-end">
+      <div class="input-group w-auto">
+        <span class="input-group-text bg-white">
+          <i class="bi bi-search"></i>
+        </span>
+        <input 
+          type="text" 
+          class="form-control" 
+          placeholder="Search project by name..." 
+          [(ngModel)]="searchTerm"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <div *ngIf="tasks.length === 0" class="text-center mt-5">
   <i class="bi bi-card-list display-4 text-secondary"></i>
   <h4 class="text-muted">No tasks to display</h4>
@@ -32,7 +51,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let task of tasks; let i = index">
+      <tr *ngFor="let task of filteredProjects; let i = index">
+
         <td>{{ task.title }}</td>
         <td>{{ task.assignedTo }}</td>
         <td>
@@ -63,7 +83,8 @@
 <div class="d-lg-none container">
 
 
-  <div *ngFor="let task of tasks; let i = index" class="card mb-4 shadow rounded-3 border-0">
+  <div *ngFor="let task of filteredProjects; let i = index" class="card mb-4 shadow rounded-3 border-0">
+
     <div class="card-body">
       <!-- Layout: Image | Text | Buttons -->
       <div class="d-flex flex-row align-items-start justify-content-between">

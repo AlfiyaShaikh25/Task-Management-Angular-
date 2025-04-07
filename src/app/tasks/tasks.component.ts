@@ -37,6 +37,9 @@ export class TasksComponent {
       assignedUser: ['', Validators.required],
       estimate: ['', Validators.required],
       timeSpent: ['', Validators.required],
+
+
+
      
     });
 
@@ -119,7 +122,7 @@ export class TasksComponent {
           localStorage.setItem(projectsKey, JSON.stringify(projects));
         }
       }
-  
+       alert('task updated')
       this.addTask.reset();
       this.editingTaskIndex = null;
       this.closeTaskForm();
@@ -178,6 +181,7 @@ export class TasksComponent {
       project.title.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
+  
   
   
   }

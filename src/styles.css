@@ -95,3 +95,6 @@ body.dark-mode .tablecolor .btn {
 body.dark-mode .tablecolor .btn:hover {
   background-color: #3c8d87;
 }
+.dark .dark-text-white {
+  color: white !important;
+}
